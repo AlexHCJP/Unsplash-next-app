@@ -1,0 +1,25 @@
+.thumb{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: white;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.thumb > div{
+    display: flex;
+    margin: 5px;
+}
+
+.thumb > div > div{
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blockImage{
+    overflow: hidden;
+    position: relative;
+}

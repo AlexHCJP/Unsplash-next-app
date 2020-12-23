@@ -1,0 +1,16 @@
+.myMasonryGrid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    width: auto;
+}
+.myMasonryGridColumn {
+    padding: 10px;
+    background-clip: padding-box;
+}
+  
+  /* Style your items */
+.myMasonryGridColumn > div { /* change div to reference your elements you put in <Masonry> */
+    background: grey;
+    margin-bottom: 10px;
+}
