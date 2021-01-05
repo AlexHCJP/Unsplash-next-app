@@ -1,19 +1,31 @@
 import { NextPageContext } from 'next'
 import { Photo } from '../../src/api/Photo'
-import { Image, Card } from 'semantic-ui-react'
-
+import { Image} from 'semantic-ui-react'
+import styles from './style.module.css';
+import CollectionList from '../../src/components/CollectionList';
 
 function Id({image}) {
-    console.log(image)
     return (
         <div>
-            <Image src={image.urls.regular} size={(image.height >= image.width)?"medium":"big"}/>
+            <div className={styles.center}>
+                <Image src={image.urls.regular}
+                    size={(image.height >= image.width)
+                        ? "medium" 
+                        : "big"}/>
+            </div>
+            
+            <div className={styles.relatedCollection}>
+                <div className={styles.textRelatedCollection}>
+                    <strong>Related Collections</strong>
+                </div>
+                
+                
+                <CollectionList collections={image.related_collections.results}/>
+            </div>
         </div>
         
     )
 }
-//min-width: 500px; max-width: calc((100vh - 175px) * 1.5);
-//min-width: 332px; max-width: calc((100vh - 175px) * 0.662338)
 Id.getInitialProps = async (ctx: NextPageContext)=>{
     const data = await Photo(ctx.query.id)
     return {image: data.response};

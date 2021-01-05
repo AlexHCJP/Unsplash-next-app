@@ -1,0 +1,13 @@
+.center{
+    display: flex;
+    justify-content: center;
+}
+.relatedCollection{
+    margin: 10px;
+}
+.textRelatedCollection{
+    text-align: center;
+    font-size: 30px;
+    margin: 20px;
+    line-height: 30px;
+}

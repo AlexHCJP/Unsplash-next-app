@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const CardImage = ({item}) => {
     return (
-        <div>
+        <div >
             <Link href={`/photo/${item.id}`}>
                 <div>
                     <Image src={item.urls.regular} />

@@ -1,3 +1,4 @@
+![developer](https://raw.githubusercontent.com/AlexHCJP/Unsplash-next-app/main/assets/images/developer.jpg)
 ### if you want to download this project enter this in the command line
 
 ```

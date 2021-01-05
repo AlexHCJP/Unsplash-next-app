@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
 import MenuApp from '../src/components/Menu'
 import 'semantic-ui-css/semantic.min.css'
+import '../src/components/CollectionList/style.css'
 import Footer from '../src/components/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {

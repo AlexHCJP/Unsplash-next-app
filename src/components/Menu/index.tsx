@@ -16,6 +16,7 @@ const list: Array<ListMenuItemProps> = [
     {name: <MenuItem icon="image" name="Home"/>, to: "/", color: 'red'},
     {name: "About", to: "/about", color: "blue"}
 ]
+
 function MenuItem ({icon, name}: MenuItemProps){
     return (
         <div>

@@ -1,0 +1,35 @@
+.containerImages{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 6px;
+    perspective: 1px;
+    overflow: hidden;
+}
+.parentContainerImages{
+    position: relative;
+    padding-bottom: 70%;
+}
+.image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.mainImage{
+    width: 70%;
+    position: relative;
+}
+.secondaryImage{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.secondaryImageBlock{
+    position: relative;
+    flex-grow: 1;
+}
+.collectionContainer{
+    max-width: 750px;
+}

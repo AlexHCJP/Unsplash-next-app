@@ -1,16 +1,23 @@
 import ListImages from '../src/components/ListImages';
 import { NextPageContext } from 'next'
 import { Photos } from '../src/api/Photo';
+import { useState } from 'react';
 
 
-export default function Home({images}) {
+export default function Home() {
+
+  const [images, setImages] = useState([])
+  const [page, setPage] = useState(1)
+
+  const addImages = async (callback) => {
+    const data = await Photos(40, page).finally(callback);
+    setImages([...images, ...data.response.results])
+    setPage(page + 1)
+  }
+
   return (
     <div>
-      <ListImages listImage={images} isUser/>
+      <ListImages listImage={images} isUser callbackScrollCenter={addImages}/>
     </div>
   )
-}
-Home.getInitialProps = async (ctx: NextPageContext) => {
-  const data = await Photos(20);
-  return {images: data.response.results};
 }
