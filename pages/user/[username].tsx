@@ -8,8 +8,8 @@ import React from 'react'
 
 interface UserComponentState {
     active: string,
-    photos: Array<any>,
-    user: Object
+    photos: any,
+    user: any
 }
 
 class UserComponent extends React.Component<{}, UserComponentState> {
@@ -17,16 +17,35 @@ class UserComponent extends React.Component<{}, UserComponentState> {
         super(props)
         this.state = {
             active: "Photos",
-            photos: props.photos,
+            photos: {
+                page: 1,
+                photos: [],
+                total: 0
+            },
             user: props.user
         }
         this.handleItemClick = this.handleItemClick.bind(this);
+        this.fetchPhoto = this.fetchPhoto.bind(this);
     }
+
     static async getInitialProps(ctx: NextPageContext) {
         const user = await User(ctx.query.username);
-        const photos = await PhotosUser(ctx.query.username);
-        return {user: user.response, photos: photos.response.results};
+        return {user: user.response};
     }
+
+    async fetchPhoto(callback){
+        const {user, photos} = this.state;
+        if(photos.photos.length != photos.total || ! photos.total){
+            const data = await PhotosUser(user.username, 30, photos.page).finally(callback);
+            this.setState({ photos: { 
+                photos: [...photos.photos, ...data.response.results], 
+                page: photos.page + 1,
+                total: data.response.total
+            }})
+        }
+        
+    }
+
     handleItemClick = (e, { name }) => {
         this.setState({active:name})
     }
@@ -34,7 +53,7 @@ class UserComponent extends React.Component<{}, UserComponentState> {
     render () {
         const {user, photos, active} = this.state
         const menuItems = [
-            {name: "Photos", content: <ListImages key={1} listImage={photos}/>},
+            {name: "Photos", content: <ListImages key={1} listImage={photos.photos} callbackScrollCenter={this.fetchPhoto}/>},
             {name: "Likes", content: null},
             {name: "Collections", content: null}
         ]

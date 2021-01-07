@@ -10,7 +10,8 @@ export default function Home() {
   const [page, setPage] = useState(1)
 
   const addImages = async (callback) => {
-    const data = await Photos(40, page).finally(callback);
+    const data = await Photos(30, page).finally(callback);
+    console.log(data)
     setImages([...images, ...data.response.results])
     setPage(page + 1)
   }

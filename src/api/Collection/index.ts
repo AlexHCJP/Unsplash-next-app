@@ -1,6 +1,10 @@
 import unsplash from '../index'
 
-const Collection = async (collectionId, perPage = 20, page = 1) => {
+const Collection = async (collectionId) => {
+    const data = await unsplash.collections.get({collectionId})
+    return data
+}
+const CollectionPhoto = async (collectionId, perPage = 20, page = 1) => {
     const data = await unsplash.collections.getPhotos({collectionId, perPage, page})
     return data
 }
@@ -11,5 +15,6 @@ const CollectionsUser = async (username) => {
 
 export {
     Collection,
-    CollectionsUser
+    CollectionsUser,
+    CollectionPhoto
 }

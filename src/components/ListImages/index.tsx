@@ -27,6 +27,10 @@ const ListImages = ({listImage, isUser, callbackScrollCenter}: ListImagesProps) 
 
     useEffect(()=>{
         document.addEventListener('scroll', handleScroll)
+        return () => {
+            document.removeEventListener('scroll', handleScroll)
+        }
+        
     })
 
     const handleScroll = (ev) => {
