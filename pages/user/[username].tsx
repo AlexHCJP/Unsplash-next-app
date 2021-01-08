@@ -5,6 +5,7 @@ import { PhotosUser } from "../../src/api/Photo";
 import HeaderUser from "../../src/components/Header/HeaderUser";
 import { Menu } from "semantic-ui-react";
 import React from 'react'
+import Head from "next/head";
 
 interface UserComponentState {
     active: string,
@@ -59,6 +60,9 @@ class UserComponent extends React.Component<{}, UserComponentState> {
         ]
         return (
             <div>
+                <Head>
+                    <title>{user.username}</title>
+                </Head>
                 <HeaderUser user={user}/>
                 {/* <Menu tabular>
                     {menuItems.map((item)=>{

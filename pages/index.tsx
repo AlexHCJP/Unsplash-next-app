@@ -1,8 +1,6 @@
 import ListImages from '../src/components/ListImages';
-import { NextPageContext } from 'next'
 import { Photos } from '../src/api/Photo';
 import { useState } from 'react';
-
 
 export default function Home() {
 
@@ -18,6 +16,7 @@ export default function Home() {
 
   return (
     <div>
+      
       <ListImages listImage={images} isUser callbackScrollCenter={addImages}/>
     </div>
   )

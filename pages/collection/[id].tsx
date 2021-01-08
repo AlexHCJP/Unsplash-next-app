@@ -2,8 +2,9 @@ import { NextPageContext } from "next"
 import { Collection, CollectionPhoto } from "../../src/api/Collection"
 import ListImages from "../../src/components/ListImages"
 import { useState } from "react"
-import { Image } from "semantic-ui-react"
 import styles from './style.module.css'
+import Container from "../../src/components/Container"
+import Head from "next/head"
 
 function Id({col}){
     const [collection, setCollection] = useState(col)
@@ -20,7 +21,16 @@ function Id({col}){
 
     return (
         <div>
-            <h1>{collection.title}</h1>
+            <Head>
+                <title>{collection.title}</title>
+            </Head>
+            <Container>
+                <h1 className={styles.titleCollection}>{collection.title}</h1>
+                <h3>{collection.description}</h3>
+                <p>{collection.total_photos} photos</p>
+            </Container>
+            
+            
             <ListImages listImage={photos} callbackScrollCenter={fetchPhoto}/>
         </div>
     )

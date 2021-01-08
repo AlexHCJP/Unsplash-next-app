@@ -12,16 +12,20 @@ const PhotosUser = async (username, perPage = 30, page = 1) => {
     const data = await unsplash.users.getPhotos({username, perPage, page})
     return data
 }
-const LikesUser = async (username, perPage = 300, page = 1) => {
+const LikesUser = async (username, perPage = 30, page = 1) => {
     const data = await unsplash.users.getLikes({username, perPage, page})
     return data
 }
-
+const SearchPhoto = async (query, perPage = 30, page = 1) => {
+    const data = await unsplash.search.getPhotos({query, perPage, page})
+    return data
+}
 
 
 export {
     Photo,
     Photos,
     PhotosUser,
-    LikesUser
+    LikesUser,
+    SearchPhoto
 }

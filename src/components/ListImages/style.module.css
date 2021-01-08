@@ -3,6 +3,7 @@
     display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
     width: auto;
+    margin: 15px;
 }
 .myMasonryGridColumn {
     padding: 10px;
@@ -12,5 +13,5 @@
   /* Style your items */
 .myMasonryGridColumn > div { /* change div to reference your elements you put in <Masonry> */
     background: grey;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
